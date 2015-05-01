@@ -1,0 +1,12 @@
+<h1>Recent NEWS</h1>
+
+<% @ads.each do |ad| %>
+<div class="col-sm-12  styling">
+	<% if ad.price %>
+	<span id="price">$<%= ad.price %></span>
+	<% end %>
+
+	<p><%= link_to ad.title, ad %></p>
+	</div>
+<% end %>
+
