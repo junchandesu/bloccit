@@ -40,8 +40,15 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def delete
-  	@question = Question.delete(params[:id])
+  def destroy
+  	@question = Question.find(params[:id])
+  	if @question.delete
+  		redirect_to questions_path
+  	elsif 
+  		flash[:error] = "You failed to delete the question."
+  		render :show
+  	end
+  		
   end
 end
 

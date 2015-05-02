@@ -1,6 +1,6 @@
 <h1><%= @question.title %></h1>
 
  <%= link_to "Edit", edit_question_path(@question), class: 'btn btn-success' %>
- 
+  <%= link_to "delete", question_path(@question), method: :delete, class: 'btn btn-info' %>
 <p><%= @question.body %></p>
 
