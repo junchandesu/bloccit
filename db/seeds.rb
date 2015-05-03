@@ -1,66 +1,75 @@
 require 'faker'
 
-# #50.times   do 
-# # 	Post.create!(
-# # 		title: Faker::Lorem.sentence,
-# # 		body: Faker::Lorem.paragraph
-# # 		)
-# # #end
-# posts = Post.all
 
-# 1#00.times do 
-# 	Comment.create!(
-# 		post: posts.sample,
-# 		body: Faker::Lorem.paragraph
-# 		)
-# #end
+ # Create Users
+ 5.times do
+   user = User.new(
+     name:     Faker::Name.name,
+     email:    Faker::Internet.email,
+     password: Faker::Lorem.characters(10)
+   )
+   user.skip_confirmation!
+   user.save!
+ end
+ users = User.all
+ 
+ # Note: by calling `User.new` instead of `create`,
+ # we create an instance of User which isn't immediately saved to the database.
+ 
+ # The `skip_confirmation!` method sets the `confirmed_at` attribute
+ # to avoid triggering an confirmation email when the User is saved.
+ 
+ # The `save` method then saves this User to the database.
 
-# puts "Seed finished"
-# puts "#{Post.count} posts created"
-# puts "#{Comment.count} comments crated"
-
-
-<<<<<<< HEAD
-post1 = "Orange Banana"
-body1 = "Good morning. Good afternoon. Good night"
-
-if Post.select { |x| x.title != post1 } && Post.select { |y| y.body != body1}
-Post.create!(
-	title: post1,
-	body: body1
-	)
-puts "The new unique post title: '#{post1}'and body: '#{body1}' are added."
-puts "In posts table, #{Post.count} posts are in total"
+# Create Posts
+50.times do
+  Post.create!(
+     user:   users.sample,
+    title:  Faker::Lorem.sentence,
+    body:   Faker::Lorem.paragraph
+  )
 end
-=======
+posts = Post.all
+
+# Create Comments
+100.times do
+  Comment.create!(
+     # user: users.sample,   # we have not yet associated Users with Comments
+    post: posts.sample,
+    body: Faker::Lorem.paragraph
+  )
+end
+
+
+ user = User.first
+ user.skip_reconfirmation!
+ user.update_attributes!(
+   email: 'chuckyee@hotmail.com',
+   password: 'alicia16'
+ )
+
+puts "Seed finished"
+puts "#{User.count} users created"
+puts "#{Post.count} posts created"
+puts "#{Comment.count} comments created"
+
+
+
 # post1 = "Orange Banana Apple"
 # body1 = "Good morning. Good afternoon. Good night!!"
+# post_title = Post.where(title: post1).first
+# post_body = Post.where(body: body1).first
 
-
-# if Post.select { |x| x.title != post1 } && Post.select { |y| y.body != body1}
-# Post.create!(
+# if !post_title && !post_body
+# 	Post.create!(
 # 	title: post1,
 # 	body: body1
 # 	)
 # puts "The new unique post title: '#{post1}'and body: '#{body1}' are added."
 # puts "In posts table, #{Post.count} posts are in total"
+# else
+# 	puts "Nothing is added"
 # end
 
-post1 = "Orange Banana Apple"
-body1 = "Good morning. Good afternoon. Good night!!"
-post_title = Post.where(title: post1).first
-post_body = Post.where(body: body1).first
 
-if !post_title && !post_body
-	Post.create!(
-	title: post1,
-	body: body1
-	)
-puts "The new unique post title: '#{post1}'and body: '#{body1}' are added."
-puts "In posts table, #{Post.count} posts are in total"
-else
-	puts "Nothing is added"
-end
-
->>>>>>> faker-seed
 
