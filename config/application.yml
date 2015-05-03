@@ -12,4 +12,6 @@
 SENDGRID_PASSWORD: exAmplePa$$
 SENDGRID_USERNAME: myspecialusername
 
+##added for practice
+SECRET_KEY_BASE: thegeneratedtoken 
 #Y_SUPER_SECRET_VARIABLE: secret123456
