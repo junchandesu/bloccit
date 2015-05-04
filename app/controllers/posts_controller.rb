@@ -16,6 +16,7 @@ skip_before_action :flash_attack, only: [:new, :index]
 
   def new
     @post = Post.new
+    authorize @post
   end
 
   def create
