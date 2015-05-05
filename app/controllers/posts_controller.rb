@@ -21,13 +21,12 @@ skip_before_action :flash_attack, only: [:new, :index]
   end
 
   def create
-<<<<<<< HEAD
+
 #    @post = Post.new(params.require(:post).permit(:title, :body))
 @post = current_user.posts.build(params.require(:post).permit(:title, :body))
-=======
     @post = Post.new(params.require(:post).permit(:title, :body))
     authorize @post
->>>>>>> Authentication-trial
+
     if @post.save
       flash[:notice] = "Post was save."
       redirect_to @post
