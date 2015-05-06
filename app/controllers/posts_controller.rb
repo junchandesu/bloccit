@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+before_action :flash_attack
 skip_before_action :flash_attack, only: [:new, :index]
 
   def flash_attack
