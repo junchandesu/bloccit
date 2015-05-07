@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'topics/index'
+
+  get 'topics/new'
+
+  get 'topics/show'
+
+  get 'topics/edit'
+
   devise_for :users
   # get 'questions/index'
 
@@ -21,7 +29,11 @@ Rails.application.routes.draw do
   # get 'posts/new'
 
   # get 'posts/edit'
-  resources :posts , :advertisements , :questions
+  resources :advertisements , :questions 
+
+  resources :topics do
+    resources :posts, except: [:index]
+  end
 
   # get 'welcome/index'
 
