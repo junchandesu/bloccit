@@ -7,13 +7,14 @@
 <% @posts.each do |post| %>
   <div class="media">
     <div class="media-body">
-      <h<4 class="media-heading">
-        %= link_to post.title, post %>
+      <h4 class="media-heading">
+        <%= link_to post.title, post %>
       </h4>
        <small>
          submitted <%= time_ago_in_words(post.created_at) %> ago by 
-        #####needs to be fixed post.user.user
-         <br>
+        ##needs to be fixed  post.user.email  
+
+                 <br>
          <%= post.comments.count %> Comments
        </small>
     </div>
