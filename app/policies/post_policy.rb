@@ -15,7 +15,8 @@ class PostPolicy < ApplicationPolicy
         elsif user.admin? || user.moderator?
           scope.all
         else
-         scope.where(id: user.posts.select(:id))
+         #scope.where(id: user.posts.select(:id))
+          scope.where(id: user)
        end
 end
 
