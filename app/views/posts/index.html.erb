@@ -3,7 +3,7 @@
 <%= link_to "Create new post", new_post_path , class: "label label-warning col-md-3 col-md-offset-9" %>
 <% end %>
 <h1>All Posts</h1>
- <% if policy(Post.all).index? %>
+ <% if policy(Post.new).index? %>
 <% @posts.each do |post| %>
   <div class="media">
     <div class="media-body">
@@ -12,8 +12,7 @@
       </h4>
        <small>
          submitted <%= time_ago_in_words(post.created_at) %> ago by 
-        post.user.name 
-
+        post.users.name
          <br>
          <%= post.comments.count %> Comments
        </small>

@@ -10,16 +10,14 @@ class PostPolicy < ApplicationPolicy
     	end
 
     	def resolve
-     		if user.admin? || user.moderator?
-        		scope.all
-      		elsif user.present? && record.user == user
-        		#scope.where(:published => true)
-        		Post.where(user_id: user.id)
-        		
-        	else
-        		nil
-      		end
-    	end
+        if !user.present? # if there is no user signed in, load no posts
+          scope.none
+        elsif user.admin? || user.moderator?
+          scope.all
+        else
+         scope.where(id: user.posts.select(:id))
+       end
+end
 
 	end
 

@@ -8,7 +8,8 @@ skip_before_action :flash_attack, only: [:new, :index]
   end
 
   def index
-  	@posts = Post.all
+    @posts = policy_scope(Post.includes(:user).all)
+  	#@posts = Post.all
     authorize @posts
   end
 
