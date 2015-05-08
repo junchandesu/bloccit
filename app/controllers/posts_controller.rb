@@ -12,16 +12,23 @@ skip_before_action :flash_attack, only: [:new, :index]
     authorize @posts
   end
 
-  def show
-  	@post = Post.find(params[:id])
-    @topic = Topic.find(params[:topic_id])
-  end
+ 
 
   def new
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
     authorize @post
   end
+
+  def show
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+    @summaries = @post.summary
+    authorize @post
+  end
+
+
+
 
   def create
     @topic = Topic.find(params[:topic_id])
