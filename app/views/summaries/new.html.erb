@@ -1,0 +1,11 @@
+ <h1>New Summary</h1>
+ 
+ <%= form_for [@topic, @post, @summary] do |s| %>
+ <%= s.label :body %>
+ <%= s.text_field :body %>
+ <%= s.submit "Save Summary" %>
+
+ <% end %>
+ 
+ 
+
