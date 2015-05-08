@@ -36,6 +36,8 @@ skip_before_action :flash_attack, only: [:new, :index]
     end
   end
 
+
+
   def edit
      @topic = Topic.find(params[:topic_id])
       @post = Post.find(params[:id])

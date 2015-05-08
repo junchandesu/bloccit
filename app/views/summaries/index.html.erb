@@ -1,0 +1,10 @@
+<h1>Summary</h1>
+
+<% @summaries.each do |s| %>
+	<%= link_to s.body, s %>
+	<% end %>
+
+
+<% if policy(Summary.new).create? %>
+      <%= link_to "New Summary", new_topic_post_summary_path %>
+    <% end %>

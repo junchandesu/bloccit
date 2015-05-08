@@ -31,15 +31,26 @@ users = User.all
  # The `save` method then saves this User to the database.
 
 # Create Posts
-50.times do
+70.times do
   Post.create!(
      user:   users.sample,
      topic:      topics.sample,
     title:  Faker::Lorem.sentence,
     body:   Faker::Lorem.paragraph
+    
   )
 end
 posts = Post.all
+
+50.times do
+  Summary.create!(
+   post: posts.sample,
+    body: Faker::Lorem.sentence
+  )
+end
+summaries = Summary.all
+
+
 
 # Create Comments
 100.times do
@@ -89,6 +100,7 @@ end
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"
+puts "#{Summary.count} summary created"
 puts "#{Comment.count} comments created"
 
 
