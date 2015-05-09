@@ -10,16 +10,15 @@ class PostPolicy < ApplicationPolicy
     	end
 
     	def resolve
-     		if user.admin? || user.moderator?
-        		scope.all
-      		elsif user.present? && record.user == user
-        		#scope.where(:published => true)
-        		Post.where(user_id: user.id)
-        		
-        	else
-        		scope.none
-      		end
-    	end
+     
+        if !user.present?
+          scope.none
+        elsif user.admin? || user.moderator?
+          scope.all?
+        else
+          scope.where(user_id: user.id).exists
+
+        end
 
 	end
 
@@ -27,6 +26,7 @@ class PostPolicy < ApplicationPolicy
 		true
 		#user.post.admin?
 
-	 end
+	end
 
  end
+end
