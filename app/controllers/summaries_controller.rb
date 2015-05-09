@@ -28,12 +28,13 @@ class SummariesController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:post_id])
-   	@summary = current_user.posts.summary.build(params.require(:summary).permit(:body))
-  	@summary.body = @post	
-     authorize @summary
+   	@summary = @post.build(params.require(:summary).permit(:body))
   	
+     authorize @summary
+  
     if @summary.save
         flash[:notice] = "Summary was saved."
+
   		redirect_to [@topic, @post, @summary], notice: "Summary was saved successfully."
   	else
   		flash[:error] = "Error creating summary. Please try again."
