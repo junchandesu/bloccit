@@ -11,4 +11,8 @@
    def update?
      create?
    end
+
+    def new?
+    create?
+  end
  end

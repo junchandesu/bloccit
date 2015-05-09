@@ -28,7 +28,7 @@ class SummariesController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:post_id])
-   	@summary = current_user.@post.build(params.require(:summary).permit(:body))
+   	@summary = current_user.summaries.build(params.require(:summary).permit(:body))
   	@summary.body = @post	
      authorize @summary
   	

@@ -17,7 +17,7 @@ class PostPolicy < ApplicationPolicy
         		Post.where(user_id: user.id)
         		
         	else
-        		nil
+        		scope.none
       		end
     	end
 
