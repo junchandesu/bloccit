@@ -8,7 +8,7 @@
   	<h1><%= link_to @post.title, [@topic, @post, @summaries] %></h1>
     <% else %>
     <h1><%= @post.title %></h1>
-    <%= link_to "New Summaries", new_topic_post_summary_path(@post, @summary), class: 'btn btn-info' %>
+    <%= link_to "New Summaries", new_topic_post_summary_path(@topic, @post, @summary), class: 'btn btn-info' %>
     <% end %>
     <p><%= @post.body %></p>
   </div>
