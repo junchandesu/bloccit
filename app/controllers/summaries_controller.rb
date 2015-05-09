@@ -8,16 +8,14 @@ class SummariesController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:post_id])
     @summary = Summary.new
-    
-  	authorize @summary
+    authorize @summary
   end
 
   def show
   	@topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
-    
+    @post = Post.find(params[:post_id])    
     @summary = Summary.find(params[:id])
-	authorize @summary
+	   authorize @summary
   end
 
    def edit
@@ -30,17 +28,37 @@ class SummariesController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:post_id])
-   
-  	@summary = Summary.new(params.require(:summary).permit(:body))
-  		authorize @summary
-  	if @summary.save
+   	@summary = @post.build_summary(params.require(:summary).permit(:body))
+  	
+     authorize @summary
+  
+    if @summary.save
+        flash[:notice] = "Summary was saved."
+
   		redirect_to [@topic, @post, @summary], notice: "Summary was saved successfully."
   	else
   		flash[:error] = "Error creating summary. Please try again."
   		render :new
   	end
-
   end
+
+
+ # def create
+ #    @topic = Topic.find(params[:topic_id])
+ #    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
+ #    @post.topic = @topic
+ #    authorize @post
+
+ #    if @post.save
+ #      flash[:notice] = "Post was saved."
+ #      redirect_to [@topic, @post]
+ #    else
+ #      flash[:error] = "There was an error saving the post. Please try again."
+ #      render :new
+ #    end
+ #  end
+
+
 
  def update
   @topic = Topic.find(params[:topic_id])

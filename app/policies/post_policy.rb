@@ -10,6 +10,7 @@ class PostPolicy < ApplicationPolicy
     	end
 
     	def resolve
+<<<<<<< HEAD
         if !user.present? # if there is no user signed in, load no posts
           scope.none
         elsif user.admin? || user.moderator?
@@ -19,6 +20,18 @@ class PostPolicy < ApplicationPolicy
           scope.where(id: user)
        end
 end
+=======
+     		if user.admin? || user.moderator?
+        		scope.all
+      		elsif user.present? && record.user == user
+        		#scope.where(:published => true)
+        		Post.where(user_id: user.id)
+        		
+        	else
+        		scope.none
+      		end
+    	end
+>>>>>>> hw-37-markdown
 
 	end
 
