@@ -1,8 +1,8 @@
 class Post < ActiveRecord::Base
-	has_many :comments
+	has_many :comments, dependent: :destroy
 	belongs_to :user
 	belongs_to :topic
-	has_one :summary
+	has_one :summary, dependent: :destroy
 	default_scope { order('title DESC')}
 
 	validates :title, length: { minimum: 5 }, presence: true

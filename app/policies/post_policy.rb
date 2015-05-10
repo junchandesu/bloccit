@@ -19,7 +19,7 @@ class PostPolicy < ApplicationPolicy
           scope.where(user_id: user.id).exists
 
         end
-
+      end
 	end
 
 	def index?
@@ -32,5 +32,9 @@ class PostPolicy < ApplicationPolicy
     user.present?
   end
 
- end
+  def destroy?
+    user.present? && (record.user == user || user.admin? || user.moderator?)
+  end
+
+ 
 end
