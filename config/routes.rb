@@ -1,60 +1,28 @@
 Rails.application.routes.draw do
   get 'comments/create'
 
-  # get 'summaries/index'
-
-  # get 'summaries/new'
-
-  # get 'summaries/show'
-
-  # get 'summaries/edit'
-
-  # get 'topics/index'
-
-  # get 'topics/new'
-
-  # get 'topics/show'
-
-  # get 'topics/edit'
 
   devise_for :users
   resources :users, only: [:update]
-  # get 'questions/index'
+    resources :advertisements , :questions 
 
-  # get 'questions/show'
-
-  # get 'questions/edit'
-
-  # get 'questions/new'
-
-  # get 'advertisements/index'
-
-  # get 'advertisements/show'
+  # resources :topics do
+  #   resources :posts, except: [:index] do
+  #     resources :summaries, except: [:index]
+  #     resources :comments, only: [:create, :destroy]
+  #   end
+  # end
 
 
+   resources :topics do
+     resources :posts, except: [:index]
+   end
+ 
+   resources :posts, only: [] do
+     resources :comments, only: [:create, :destroy]
+   end
 
-  # get 'posts/index'
-
-  # get 'posts/show'
-
-  # get 'posts/new'
-
-  # get 'posts/edit'
-  resources :advertisements , :questions 
-
-  resources :topics do
-    resources :posts, except: [:index] do
-      resources :summaries, except: [:index]
-      resources :comments, only: [:create, :destroy]
-    end
-  end
-
-  # get 'welcome/index'
-
-  # get 'welcome/about'
-
-  # get 'welcome/contact'
-  get 'about' => 'welcome#about'
+   get 'about' => 'welcome#about'
 
   get 'contact' => 'welcome#contact'
 
