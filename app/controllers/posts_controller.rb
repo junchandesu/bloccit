@@ -3,13 +3,14 @@ class PostsController < ApplicationController
 before_action :flash_attack
 skip_before_action :flash_attack, only: [:new, :index]
 
+
   def flash_attack
     flash[:set] = "Flash is set before Post Contoller"
   end
 
   def index
-  	@posts = Post.all
-    authorize @posts
+      @posts = Post.all
+       authorize @posts
   end
 
  
