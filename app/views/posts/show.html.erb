@@ -18,7 +18,7 @@
     <p>
 
 <%= @post.markdown_body %>
-
+  <%= render ({ partial: 'form', locals: {topic: @topic, post: @post}} , {template: 'comments/form', locals: {comment: @post.comments.new}}) %>
     </p>
   </div>
  
@@ -29,3 +29,4 @@
   </div>
 </div>
 
+render({ partial: 'posts/post', locals: {post: post} })

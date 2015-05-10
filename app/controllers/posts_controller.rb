@@ -26,6 +26,7 @@ def new
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     @summaries = @post.summary
+    @comment = @post.comments
     authorize @post
   end
 

@@ -1,0 +1,11 @@
+<%= form_for [topic, post, comment] do |f| %>
+	<% if comment.any? %>
+		<% comment.each do |msg| %>
+
+		<%= msg.body %>
+				submitted <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.name %> 
+				<% end %>
+	<% end %>
+	
+<% end %>
+
