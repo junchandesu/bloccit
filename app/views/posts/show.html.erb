@@ -4,23 +4,34 @@
 <div class="row">
   <div class="col-md-8">
 
-  	<% if @summaries.present? %>
-  	<h1><%= link_to @post.title, [@topic, @post, @summaries] %></h1>
+  <% if @summaries.present? %>
+  	   <h1><%= link_to @post.title, [@topic, @post, @summaries] %></h1>
     <% else %>
  
-  <h1>
+     <h1>
+      <%= @post.markdown_title %>
+     </h1>
+    
+      <%= link_to "New Summaries", new_topic_post_summary_path(@topic, @post, @summary), class: 'btn btn-info' %>
+      <% end %>
+      
+      <%= @post.markdown_body %>
 
-<%= @post.markdown_title %>
-  </h1>
-    <%= link_to "New Summaries", new_topic_post_summary_path(@topic, @post, @summary), class: 'btn btn-info' %>
-    <% end %>
-   
     <p>
 
-<%= @post.markdown_body %>
-  <%= render ({ partial: 'form', locals: {topic: @topic, post: @post}} , {template: 'comments/form', locals: {comment: @post.comments.new}}) %>
-    </p>
+    
+       <% if @comment.any? %>
+        <% @comment.each do |comment| %>
+        <h3><%= render 'comments/comment', {comment: comment } %></h3>
+        <% end %>
+  
+      <% end %>
+
+   
+    </p>  
+
   </div>
+
  
   <div class="col-md-4">
     <% if policy(@post).edit? %>
@@ -29,4 +40,3 @@
   </div>
 </div>
 
-render({ partial: 'posts/post', locals: {post: post} })
