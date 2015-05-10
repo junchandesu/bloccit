@@ -20,16 +20,18 @@
     <p>
 
     
-       <% if @comment.any? %>
+     
         <% @comment.each do |comment| %>
         <h3><%= render 'comments/comment', {comment: comment } %></h3>
-        <% end %>
+     
   
       <% end %>
 
-   
-    </p>  
 
+   
+
+    </p>  
+<%= render 'comments/form', {topic: @topic, post: @post, comment: @comment.new } %>
   </div>
 
  

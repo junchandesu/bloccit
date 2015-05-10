@@ -5,22 +5,22 @@ class CommentsController < ApplicationController
 def new
     @topic = Topic.find(params[:topic_id])
     @post = Post.fine(params[:post_id])
-    @comment = Post.new
+    @comment = Comment.new
     authorize @comment
-  end
+ end
 
-  def create
-   @topic = Topic.find(params[:id])
+def create
+   @topic = Topic.find(params[:topic_id])
    @post = Post.find(params[:post_id])
    @comment = current_user.comments.build(params.require(:comment).permit(:body))
    authorize @comment
 
    if @comment.save
    	flash[:notice] = "Comment was saved"
-   	redirect_to [@topic, @post, @summary]
+   	redirect_to [@topic, @post]
    else
-   	flash[:eror] = "Error creating comments. Please try again."
-   	render [@topic, @post]
-  end
+   	flash[:error] = "Error creating comments. Please try again to enter at least 5 letters."
+   	redirect_to [@topic, @post]
+   end
 end
-
+end
