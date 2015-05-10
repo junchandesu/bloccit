@@ -1,7 +1,10 @@
 class TopicsController < ApplicationController
   def index
-     @topics = Topic.all
-     authorize @topics
+    #@topics = Topic.all
+    #@topics = Topic.paginate(page: params[:page], per_page: 10)
+    #@topics =Topic.order('created_at DESC').page(params[:page]).per_page(:page)
+    @topics =Topic.order('created_at DESC').page(params[:page])
+    authorize @topics
   end
 
   def new
@@ -11,7 +14,8 @@ class TopicsController < ApplicationController
 
   def show
      @topic = Topic.find(params[:id])
-     @posts = @topic.posts
+    # @posts = @topic.posts
+    @posts = @topic.posts.paginate(page: params[:page], per_page: 3)
      authorize @topic
   end
 

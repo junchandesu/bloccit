@@ -25,7 +25,10 @@ class Post < ActiveRecord::Base
 
 	def markdown_body
 		render_as_markdown(body)
+<<<<<<< HEAD
 		
+=======
+>>>>>>> hw-39
 	end
 
 	private
@@ -34,7 +37,11 @@ class Post < ActiveRecord::Base
 		renderer= Redcarpet::Render::HTML.new
 		extensions = {fenced_code_blocks: true}
 		@redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+<<<<<<< HEAD
 		(@redcarpet.render  text).html_safe
+=======
+		(@redcarpet.render text).html_safe
+>>>>>>> hw-39
 	end
 
 

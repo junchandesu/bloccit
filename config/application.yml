@@ -15,3 +15,13 @@ SENDGRID_USERNAME: 'app36309919@heroku.com'
 ##added for practice
 SECRET_KEY_BASE: thegeneratedtoken 
 #Y_SUPER_SECRET_VARIABLE: secret123456
+
+AWS_ACCESS_KEY_ID:  'AKIAJS3MGY3CS4STIVWQ'
+AWS_SECRET_ACCESS_KEY: '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'
+development:
+  AWS_BUCKET: 'bloccit-development-junko'
+production:
+  AWS_BUCKET: 'uploading-img-bloccit-production'
+
+
+Secret Access Key:
