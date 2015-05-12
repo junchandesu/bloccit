@@ -1,14 +1,17 @@
 
-SENDGRID_PASSWORD: alicia16
+SENDGRID_PASSWORD: alicia161
 SENDGRID_USERNAME: app36309919@heroku.com
 
 DEVISE_SECRET_KEY:  thegeneratedtoken 
 
- AWS_ACCESS_KEY_ID: AKIAJARZVU2DV3V5W7HQ
- AWS_SECRET_ACCESS_KEY: JSRwZuZbOn3gnimF+8af0w1yfvEKoTirjL8Ko+D
+ AWS_ACCESS_KEY_ID: AKIAJVGESLHCPBTTTNFA
+ AWS_SECRET_ACCESS_KEY: 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
  development:
-   AWS_BUCKET: bloccit-development-junko
+   AWS_BUCKET: bloccit-junko-development
  production:
-   AWS_BUCKET: uploading-img-bloccit-production
+   AWS_BUCKET: bloccit-junko-production
+
+  
+
 
 
