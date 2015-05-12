@@ -2,12 +2,12 @@ class CommentPolicy < ApplicationPolicy
 
 
 	def create?
-		 user.present? && (record.user == user || user.admin?)
+		 user.present? 
 	end
 
  
- 	def new?
-    	create?
-  	end
+ 	# def new?
+  #   	user.present?
+  # 	end
 
 end

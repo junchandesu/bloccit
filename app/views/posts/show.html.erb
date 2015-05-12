@@ -31,7 +31,9 @@
    
 
     </p>  
-<%= render 'comments/form', {topic: @topic, post: @post, comment: @comment.new } %>
+    <% if policy(@comment).create? %>
+<%= render 'comments/form', {topic: @topic, post: @post} %>
+    <% end %>
   </div>
 
  
