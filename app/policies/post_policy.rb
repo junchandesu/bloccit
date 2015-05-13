@@ -53,5 +53,9 @@ end
 
 	end
 
+  def show?
+    user.present?
+  end
+
  end
 end
