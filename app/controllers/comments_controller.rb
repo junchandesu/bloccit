@@ -13,6 +13,7 @@ def create
    @topic = Topic.find(params[:topic_id])
    @post = Post.find(params[:post_id])
    @comment = current_user.comments.build(params.require(:comment).permit(:body))
+   @comment.post = @post
    authorize @comment
 
    if @comment.save
