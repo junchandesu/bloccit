@@ -15,6 +15,6 @@
  
    def user_params
      # params.require(:user).permit(:name)
-     params.require(:user).permit(:name, :avatar)
+     params.require(:user).permit(:name, :picture, :picture_cache)
    end
  end

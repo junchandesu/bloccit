@@ -5,8 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
    has_many :posts
+<<<<<<< HEAD
    has_many :comments
 
+=======
+   #mount_uploader :avatar, AvatarUploader
+   mount_uploader :picture, ImageUploader
+>>>>>>> Uploading-images
  def admin?
    role == 'admin'
  end
@@ -14,6 +19,5 @@ class User < ActiveRecord::Base
  def moderator?
    role == 'moderator'
  end
-
- mount_uploader :avatar, AvatarUploader
+ 
 end

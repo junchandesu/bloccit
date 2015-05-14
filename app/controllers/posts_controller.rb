@@ -92,7 +92,7 @@ def new
 private
 
 def post_params
-  params.require(:post).permit(:title, :body)
+  params.require(:post).permit(:title, :body, :picture_cache, :picture)
 end
   
   end

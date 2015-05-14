@@ -25,6 +25,21 @@
     <% if policy(Comment.new).create? %>
 <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: Comment.new} %>
     <% end %>
+<<<<<<< HEAD
+=======
+     <small>
+       <%= image_tag(@post.user.picture.tiny.url) if @post.user.picture? %>
+       submitted <%= time_ago_in_words(@post.created_at) %> ago by
+       <%= @post.user.name %>
+     </small>
+    <p>
+
+<%= @post.markdown_body %>
+<% if @post.picture? %>
+<%= image_tag(@post.picture_url(:large), width: 100, height: 100) %>
+<% end %>
+    </p>
+>>>>>>> Uploading-images
   </div>
 
  
@@ -34,4 +49,5 @@
     <% end %>
   </div>
 </div>
+
 

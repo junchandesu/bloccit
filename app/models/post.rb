@@ -10,8 +10,12 @@ class Post < ActiveRecord::Base
 	has_one :summary
 	default_scope { order('title DESC')}
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> hw-34
 =======
+=======
+	mount_uploader :picture, ImageUploader
+>>>>>>> Uploading-images
 
 	validates :title, length: { minimum: 5 }, presence: true
 	validates :body, length: { minimum: 20 }, presence: true

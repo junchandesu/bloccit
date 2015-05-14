@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150510145205) do
+=======
+ActiveRecord::Schema.define(version: 20150514025806) do
+>>>>>>> Uploading-images
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "title"
@@ -48,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150510145205) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "topic_id"
+    t.string   "picture"
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
@@ -98,6 +103,8 @@ ActiveRecord::Schema.define(version: 20150510145205) do
     t.datetime "updated_at"
     t.string   "role"
     t.string   "avatar"
+    t.string   "pictire"
+    t.string   "picture"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
