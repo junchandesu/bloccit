@@ -15,8 +15,7 @@
 </div>
 
 
-<%= form_for [@topic, @post], multipart: true do |f| %>
-    <%= f.hidden_field :picture_cache %>
-    <%= f.file_field :picture %>
-      
+
+<% if @post.picture? %>
+<%= image_tag(@post.picture_url(:large), width: 100, height: 100) %>
 <% end %>
