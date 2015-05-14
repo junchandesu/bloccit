@@ -22,7 +22,9 @@
     <p>
 
 <%= @post.markdown_body %>
-
+<% if @post.picture? %>
+<%= image_tag(@post.picture_url(:large), width: 100, height: 100) %>
+<% end %>
     </p>
   </div>
  
@@ -32,4 +34,5 @@
     <% end %>
   </div>
 </div>
+
 

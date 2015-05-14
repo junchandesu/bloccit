@@ -13,3 +13,10 @@
  		<%= render partial: 'form', locals: {topic: @topic, post: @post} %>
 	</div>
 </div>
+
+
+<%= form_for [@topic, @post], multipart: true do |f| %>
+    <%= f.hidden_field :picture_cache %>
+    <%= f.file_field :picture %>
+      
+<% end %>
