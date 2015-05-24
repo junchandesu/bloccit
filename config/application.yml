@@ -1,6 +1,6 @@
 
-SENDGRID_PASSWORD: alicia161
-SENDGRID_USERNAME: app36309919@heroku.com
+SENDGRID_PASSWORD: 'Mikio3desu'
+SENDGRID_USERNAME: 'app36309919@heroku.com'
 
 DEVISE_SECRET_KEY:  thegeneratedtoken 
 
