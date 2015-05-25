@@ -1,48 +1,16 @@
 Rails.application.routes.draw do
-  # get 'summaries/index'
-
-  # get 'summaries/new'
-
-  # get 'summaries/show'
-
-  # get 'summaries/edit'
-
-  # get 'topics/index'
-
-  # get 'topics/new'
-
-  # get 'topics/show'
-
-  # get 'topics/edit'
+ 
 
   devise_for :users
   resources :users, only: [:update]
-  # get 'questions/index'
-
-  # get 'questions/show'
-
-  # get 'questions/edit'
-
-  # get 'questions/new'
-
-  # get 'advertisements/index'
-
-  # get 'advertisements/show'
-
-
-
-  # get 'posts/index'
-
-  # get 'posts/show'
-
-  # get 'posts/new'
-
-  # get 'posts/edit'
+  
   resources :advertisements , :questions 
 
   resources :topics do
     resources :posts, except: [:index] do
       resources :summaries, except: [:index]
+
+      resources :comments, only: [:create]
     end
   end
 

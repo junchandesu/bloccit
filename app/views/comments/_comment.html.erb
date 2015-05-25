@@ -1,0 +1,5 @@
+
+<p>
+	<%= comment.body %>
+submitted <b><%= time_ago_in_words(comment.created_at) %> ago </b>by <i><%= comment.user.name %> </i>
+</p>

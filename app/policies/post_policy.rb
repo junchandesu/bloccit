@@ -28,5 +28,10 @@ class PostPolicy < ApplicationPolicy
 
 	end
 
+
+  def show?
+    user.present?
+  end
+
  end
 end
