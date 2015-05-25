@@ -1,16 +1,10 @@
 
 SENDGRID_PASSWORD: 'Mikio3desu'
-SENDGRID_USERNAME: 'app36309919@heroku.com'
+SENDGRID_USERNAME: app36309919@heroku.com
 
-DEVISE_SECRET_KEY:  thegeneratedtoken 
+SECRET_KEY_BASE: 75e8d1668e9f49eb01bdd7675ec9bf970b21c50cacc66d75f144b8bde9c5f1726cb8ea9c0ce43cc912eb3132d06116bf4c20f2bead59d8f1d50b69e9a98bd0e3
 
- AWS_ACCESS_KEY_ID: AKIAJVGESLHCPBTTTNFA
- AWS_SECRET_ACCESS_KEY: 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
- development:
-   AWS_BUCKET: bloccit-junko-development
- production:
-   AWS_BUCKET: bloccit-junko-production
-
+ 
   
 
 
