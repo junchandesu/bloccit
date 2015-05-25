@@ -69,6 +69,21 @@ def new
     end
   end
 
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+    authorize @post
+
+    if @post.destroy
+      flash[:notice] ="\"#{@post.title}\" was deleted successfully "
+      redirect_to [@topoic, @post]
+    else
+      flash[:error] = "Comment could not be deleted. Try again"
+      redirect_to [@topic, @post]
+    end
+
+  end
+
 private
 
 def post_params
