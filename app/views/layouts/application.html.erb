@@ -18,13 +18,14 @@
 			<li><%= link_to "Contact", contact_path %></li> 
 			<!-- link_to "Post", topic_posts_path  -->
 			<li><%= link_to "Topic", topics_path %></li>
-			<li><%= link_to "News", advertisements_path %></li> 
-			<li><%= link_to "Question", questions_path %></li> 
+			<li><%= link_to "News", advertisement_path %></li> 
+			</li> 
 		
 
 			<div class="pull-right user-info">
 				<% if current_user %>
-					 <%= image_tag(current_user.picture.thumb.url) if current_user.picture? %>
+					<%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
+
 				  Hello <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 
          		<% else %>

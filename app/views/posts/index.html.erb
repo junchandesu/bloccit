@@ -3,7 +3,7 @@
 <%= link_to "Create new post", new_post_path , class: "label label-warning col-md-3 col-md-offset-9" %>
 <% end %>
 <h1>All Posts</h1>
- <% if policy(@posts).index? %>
+ <% if policy(Post.all).index? %>
 <% @posts.each do |post| %>
   <div class="media">
     <div class="media-body">
@@ -12,13 +12,13 @@
       </h4>
        <small>
          submitted <%= time_ago_in_words(post.created_at) %> ago by 
-        ##needs to be fixed  post.user.email  
+        post.user.name 
 
-                 <br>
+         <br>
          <%= post.comments.count %> Comments
        </small>
     </div>
-    <%= will_paginate @posts %>
+        <%= will_paginate @posts %>
   </div>
 <% end %>
 <% end %>

@@ -1,47 +1,37 @@
-
-
-
 <div class="row">
   <div class="col-md-8">
 
-  <% if @summaries.present? %>
-  	   <h1><%= link_to @post.title, [@topic, @post, @summaries] %></h1>
-  <% else %>
+    <% if @summaries.present? %>
+    <h1><%= link_to @post.title, [@topic, @post, @summaries] %></h1>
+    <% else %>
  
-     <h1>
-      <%= @post.markdown_title %>
-     </h1>
+  <h1>
+
+<%= @post.markdown_title %>
+  </h1>
     
-      <%= link_to "New Summaries", new_topic_post_summary_path(@topic, @post, @summary), class: 'btn btn-info' %>
-  <% end %>
-      
-  <%= @post.markdown_body %>
-
-  <p>
-
-  
-  <h3><%= render partial: 'comments/comment', collection: @comments %></h3>
-    </p>  
-    <% if policy(Comment.new).create? %>
-<%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: Comment.new} %>
     <% end %>
-<<<<<<< HEAD
-=======
      <small>
-       <%= image_tag(@post.user.picture.tiny.url) if @post.user.picture? %>
+       <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
        <%= @post.user.name %>
      </small>
     <p>
 
 <%= @post.markdown_body %>
-<% if @post.picture? %>
-<%= image_tag(@post.picture_url(:large), width: 100, height: 100) %>
-<% end %>
-    </p>
->>>>>>> Uploading-images
-  </div>
 
+
+
+  <%= render partial: 'comments/comment', collection: @comments  %>
+
+<%=image_tag (@post.picture.large.url) if @post.picture? %>
+
+    </p>
+
+     <% if policy(Comment.new).create? %>
+<%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: Comment.new} %>
+    <% end %>
+  </div>
  
   <div class="col-md-4">
     <% if policy(@post).edit? %>
@@ -49,5 +39,3 @@
     <% end %>
   </div>
 </div>
-
-

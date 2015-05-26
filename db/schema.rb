@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150510145205) do
-=======
-ActiveRecord::Schema.define(version: 20150514025806) do
->>>>>>> Uploading-images
+ActiveRecord::Schema.define(version: 20150513040456) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "title"
@@ -102,9 +98,8 @@ ActiveRecord::Schema.define(version: 20150514025806) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
-    t.string   "avatar"
     t.string   "pictire"
-    t.string   "picture"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

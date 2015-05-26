@@ -31,7 +31,7 @@ users = User.all
  # The `save` method then saves this User to the database.
 
 # Create Posts
-250.times do
+400.times do
   Post.create!(
      user:   users.sample,
      topic:      topics.sample,
@@ -102,24 +102,3 @@ puts "#{User.count} users created"
 puts "#{Post.count} posts created"
 puts "#{Summary.count} summary created"
 puts "#{Comment.count} comments created"
-
-
-
-# post1 = "Orange Banana Apple"
-# body1 = "Good morning. Good afternoon. Good night!!"
-# post_title = Post.where(title: post1).first
-# post_body = Post.where(body: body1).first
-
-# if !post_title && !post_body
-# 	Post.create!(
-# 	title: post1,
-# 	body: body1
-# 	)
-# puts "The new unique post title: '#{post1}'and body: '#{body1}' are added."
-# puts "In posts table, #{Post.count} posts are in total"
-# else
-# 	puts "Nothing is added"
-# end
-
-
-

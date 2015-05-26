@@ -3,21 +3,13 @@ class PostsController < ApplicationController
 before_action :flash_attack
 skip_before_action :flash_attack, only: [:new, :index]
 
-
   def flash_attack
     flash[:set] = "Flash is set before Post Contoller"
   end
 
   def index
-<<<<<<< HEAD
-    #@posts = policy_scope(Post.includes(:user).all)
-  	#@posts = Post.all
-    @posts = policy_scope(Post) 
+    @posts = Post.all
     authorize @posts
-=======
-      @posts = Post.all
-       authorize @posts
->>>>>>> hw-39
   end
 
  
@@ -37,17 +29,6 @@ def new
     authorize @post
   end
 
-<<<<<<< HEAD
-  def create
-<<<<<<< HEAD
-
-#    @post = Post.new(params.require(:post).permit(:title, :body))
-@post = current_user.posts.build(params.require(:post).permit(:title, :body))
-=======
-    @topic = Topic.find(params[:topic_id])
->>>>>>> hw-34
-    @post = Post.new(params.require(:post).permit(:title, :body))
-=======
 
 
 
@@ -55,7 +36,6 @@ def new
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(post_params)
     @post.topic = @topic
->>>>>>> hw-37-markdown
     authorize @post
 
     if @post.save
@@ -76,7 +56,7 @@ def new
   end
 
   def update
-    @topic = Topic.find(params[:topic_id])
+     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     authorize @post
 
@@ -89,6 +69,21 @@ def new
     end
   end
 
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+    authorize @post
+
+    if @post.destroy
+      flash[:notice] ="\"#{@post.title}\" was deleted successfully "
+      redirect_to [@topoic, @post]
+    else
+      flash[:error] = "Comment could not be deleted. Try again"
+      redirect_to [@topic, @post]
+    end
+
+  end
+
 private
 
 def post_params
@@ -96,7 +91,3 @@ def post_params
 end
   
   end
-
-
-
-

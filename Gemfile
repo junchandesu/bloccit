@@ -31,20 +31,22 @@ gem 'faker'
 
 gem 'devise'
 
+gem 'figaro', '1.0'
+
 gem 'pundit'
 
 gem 'redcarpet'
 
-gem 'carrierwave'
+gem "carrierwave"
+gem "cloudinary"
 
 gem 'mini_magick'
 
 gem 'fog'
 
 
+
 gem 'will_paginate', '~> 3.0.5'
-gem "carrierwave"
-gem "cloudinary"
 
 
 # Use ActiveModel has_secure_password
