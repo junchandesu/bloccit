@@ -22,7 +22,7 @@ describe Post do
 		end
 
 		describe "#points" do
-			it "returns th esum of all down and up votes" do
+			it "returns the sum of all down and up votes" do
 				expect( @post.posts).to eq(1)
 			end
 		end
