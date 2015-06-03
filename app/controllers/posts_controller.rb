@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-before_action :flash_attack
-skip_before_action :flash_attack, only: [:new, :index]
+#before_action :flash_attack
+#skip_before_action :flash_attack, only: [:new, :index]
 
   def flash_attack
     flash[:set] = "Flash is set before Post Contoller"
@@ -10,11 +10,9 @@ skip_before_action :flash_attack, only: [:new, :index]
   def index
     @posts = Post.all
     authorize @posts
-  end
+  end 
 
- 
-
-def new
+  def new
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
     authorize @post
@@ -32,7 +30,7 @@ def new
 
 
 
- def create
+  def create
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(post_params)
     @post.topic = @topic
@@ -49,7 +47,7 @@ def new
 
 
 
-   def edit
+  def edit
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     authorize @post
@@ -84,10 +82,12 @@ def new
 
   end
 
-private
 
-def post_params
-  params.require(:post).permit(:title, :body, :picture_cache, :picture)
-end
-  
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :body, :picture_cache, :picture)
   end
+  
+
+end

@@ -4,9 +4,11 @@ class Post < ActiveRecord::Base
 	belongs_to :topic
 	has_one :summary
 	has_many :votes, dependent: :destroy
+	after_create :create_vote
+
 	
 	default_scope { order('rank DESC') }
-
+	
 	mount_uploader :picture, ImageUploader
 
 	validates :title, length: { minimum: 5 }, presence: true
@@ -35,12 +37,14 @@ class Post < ActiveRecord::Base
 		render_as_markdown(body)
 	end
 
-	def update_rank
-     age_in_days = (created_at - Time.new(1970,1,1)) / (60 * 60 * 24) # 1 day in seconds
-     new_rank = points + age_in_days
+     def update_rank
+    	age_in_days = (created_at - Time.new(1970,1,1)) / (60 * 60 * 24) # 1 day in seconds
+     	new_rank = points + age_in_days
  
-     update_attribute(:rank, new_rank)
-   end
+     	update_attribute(:rank, new_rank)
+ 	end
+
+
 
 	private
 
@@ -51,6 +55,8 @@ class Post < ActiveRecord::Base
 		(@redcarpet.render text).html_safe
 	end
 
-	
+ 	 def create_vote
+     	user.votes.create(value: 1, post: self)
+ 	 end
 
 end
