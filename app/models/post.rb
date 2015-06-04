@@ -4,7 +4,8 @@ class Post < ActiveRecord::Base
 	belongs_to :topic
 	has_one :summary
 	has_many :votes, dependent: :destroy
-	after_create :create_vote
+	
+	#after_create :create_vote
 
 	
 	default_scope { order('rank DESC') }
@@ -13,8 +14,8 @@ class Post < ActiveRecord::Base
 
 	validates :title, length: { minimum: 5 }, presence: true
 	validates :body, length: { minimum: 20 }, presence: true
-	# validates :topic, presence: true
-	# validates :user, presence: true
+	validates :topic, presence: true
+	validates :user, presence: true
 
 	def up_votes
      votes.where(value: 1).count
@@ -46,7 +47,7 @@ class Post < ActiveRecord::Base
 
 
 
-	private
+	#private
 
 	def render_as_markdown(text)
 		renderer= Redcarpet::Render::HTML.new
