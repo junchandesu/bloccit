@@ -7,7 +7,10 @@ class Topic < ActiveRecord::Base
 
 	#Topic.visible_to is equivalent to Topic.where(public: true).
 	#scope :visiable_to, -> {where(public: true)}
+	#scope :visible_to, -> (user) { user ? all : where(public: true)}
 
-	scope :visible_to, -> (user) { user ? all : where(public: true )}
+	scope :publicly_viewable, -> { where(public: true)}
+	scope :privately_viewable, -> {where(public: false)}
+	scope :visible_to, -> (user) { user ? all : :publicly_viewable}
 
 end
