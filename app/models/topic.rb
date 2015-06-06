@@ -5,4 +5,9 @@ class Topic < ActiveRecord::Base
 
 	self.per_page = 50
 
+	#Topic.visible_to is equivalent to Topic.where(public: true).
+	#scope :visiable_to, -> {where(public: true)}
+
+	scope :visible_to, -> (user) { user ? all : where(public: true )}
+
 end

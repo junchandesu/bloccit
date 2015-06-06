@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
       #  @topics = Topic.paginate(page: params[:page], per_page: 10)
       #@topics = Topic.paginate(page: params[:page], per_page: 10)
      
-       @topics =Topic.order('created_at DESC').page(params[:page])
+       @topics =Topic.order('created_at DESC').visible_to(current_user).page(params[:page])
      authorize @topics
   end
 
