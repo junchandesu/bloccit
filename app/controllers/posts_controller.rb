@@ -74,9 +74,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize @post
 
+
     if @post.destroy
       flash[:notice] ="\"#{@post.title}\" was deleted successfully "
-      redirect_to [@topoic, @post]
+      redirect_to @topic
     else
       flash[:error] = "Comment could not be deleted. Try again"
       redirect_to [@topic, @post]
