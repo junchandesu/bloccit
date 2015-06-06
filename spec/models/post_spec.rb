@@ -38,6 +38,6 @@ end
        post.create_vote
        expect( post.up_votes ).to eq(1)
      end
-   end
+   
 
 end
