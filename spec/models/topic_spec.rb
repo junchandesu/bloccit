@@ -4,14 +4,13 @@ require 'rails_helper'
 
 describe Topic do 
 
-	include TestFactories
+include TestFactories
 
 	describe "scopes" do
 
 		before do
-			@post = associated_post
 			@user = authenticated_user
-			@public_topic = Topic.create(public: true)
+			@public_topic = Topic.create
 			@private_topic = Topic.create(public: false)
 		end
 
@@ -23,7 +22,7 @@ describe Topic do
 
  		describe "privately_viewable" do
  			it "return a relation of all private topics" do
- 				expect(Topic.privately_viewable).to eq( [@private_topic] )
+ 				expect(Topic.privately_viewable).to eq( @private_topic )
  			end
  		end
 
