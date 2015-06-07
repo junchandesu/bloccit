@@ -18,9 +18,10 @@
        <%= pluralize(@post.down_votes, 'down vote') %>
      </small>
    </div>
+   <% end %>
        <%= render partial: 'favorites/favorite', locals: { post: @post } %>
 
-    <% end %>
+ 
      <small>
        <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
