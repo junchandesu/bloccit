@@ -33,6 +33,9 @@ class PostPolicy < ApplicationPolicy
     user.present?
   end
 
+  def desroy?
+    user.present? && (uer.admin? || user.moderator?)
+  end
  end
 
 

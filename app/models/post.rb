@@ -9,7 +9,8 @@ class Post < ActiveRecord::Base
 
 	
 	default_scope { order('rank DESC') }
-	
+	scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
+
 	mount_uploader :picture, ImageUploader
 
 	validates :title, length: { minimum: 5 }, presence: true
@@ -17,6 +18,7 @@ class Post < ActiveRecord::Base
 	validates :topic, presence: true
 	validates :user, presence: true
 
+ 
 	def up_votes
      votes.where(value: 1).count
    end
