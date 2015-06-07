@@ -1,21 +1,25 @@
 require 'rails_helper'
 
-
+include TestFactories
+include Devise::TestHelpers
 
 describe Topic do 
-
-include TestFactories
 
 	describe "scopes" do
 
 		before do
 			@user = authenticated_user
-			@public_topic = Topic.create
+			@public_topic = Topic.create(public: true)
 			@private_topic = Topic.create(public: false)
 		end
 
 		describe "publicly_viewable" do
-       		it "returns a relation of all public topics" do
+
+			  it "returns a relation of all public topics" do
+         #	allow( FavoriteMailer).to receive(:new_comment)
+   # .with(@user, @post, @comment)
+  #  .and_return( double(deliver_now: true))
+
          	expect(Topic.publicly_viewable).to eq( [@public_topic] )
        		end
     	end

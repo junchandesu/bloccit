@@ -1,8 +1,10 @@
 require 'rails_helper'
 
+include TestFactories
+
 describe User do 
 
-	include TestFactories
+	
 
 	describe "#favorited(post)" do
 		before do

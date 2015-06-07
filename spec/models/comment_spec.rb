@@ -7,13 +7,17 @@ describe Comment do
   describe "after_create" do
 
 	before do
-			@post = associate_post
+			@post = associated_post
 			@user = authenticated_user(email_favorites: true)
 			@other_user = authenticated_user
 			@comment = Comment.new(body: "My comment is really great", post: @post, user: @other_user)
 	end
 
-	if "sends en email to users who have favorites the post" do
+	# We do not need to change anything for this conditions;
+	# The email_favorites attribute defaults to true
+context "with user's permission" do
+
+	it "sends en email to users who have favorites the post" do
 		favorite = @user.favorites.create(post: @post)
 
 		allow( FavoriteMailer)
@@ -27,11 +31,29 @@ describe Comment do
 		@comment.save
 	end
 
+
+
 	it "does not send emails to users who haven't" do
 		expect( FavoriteMailer)
 		.not_to receive(:new_comment)
+
+		@comment.save
 	end
   end
 
-end
+ context "without permission" do
 
+    before { @user.update_attribute(:email_favorites, false) }
+	
+	it "does not send emails, even to users who have favorited" do
+
+	@user.favorites.where(post: @post).create
+
+	expect( FavoriteMailer).not_to receive(:new_comment)
+
+	@comment.save
+
+	end
+   end
+  end
+end
