@@ -1,28 +1,26 @@
 require 'rails_helper'
 
-
-
 describe Topic do 
-
-include TestFactories
 
 	describe "scopes" do
 
 		before do
-			@user = authenticated_user
-			@public_topic = Topic.create
-			@private_topic = Topic.create(public: false)
+			name_topic = "Name should be longer than 5 letters"
+			@public_topic = Topic.create(public: true, name: name_topic)
+			@private_topic = Topic.create(public: false, name: name_topic)
 		end
 
 		describe "publicly_viewable" do
-       		it "returns a relation of all public topics" do
+
+			  it "returns a relation of all public topics" do
+         
          	expect(Topic.publicly_viewable).to eq( [@public_topic] )
        		end
     	end
 
  		describe "privately_viewable" do
  			it "return a relation of all private topics" do
- 				expect(Topic.privately_viewable).to eq( @private_topic )
+ 				expect(Topic.privately_viewable).to eq( [@private_topic] )
  			end
  		end
 
