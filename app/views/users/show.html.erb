@@ -9,7 +9,8 @@
          <%= render @posts %>
        </div>
        <div class="tab-pane" id="comments">
-         <%= render @comments %>
+         <%= render @user.comments %>
+         <%= render partial: "comments/comment", collection: @comments %>
        </div>
      </div>
    </div>

@@ -13,7 +13,7 @@
 
    def show
      @user = User.find(params[:id])
-     @posts = @user.posts.visible_to(current_user)
+     @posts = @user.posts#.visible_to(current_user)
      @comments = @user.comments
    end
  
@@ -25,3 +25,4 @@
     # params.require(:user).permit(:name, :picture, :picture_cache)
    end
  end
+

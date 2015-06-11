@@ -36,4 +36,10 @@ module ApplicationHelper
  		end
  		arrow_down + dim
 	end
+
+	def comment_url_helper(comment)
+		post = comment.post
+		[post, comment]
+	end
+
 end
