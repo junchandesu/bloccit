@@ -1,24 +1,12 @@
- <% if policy(Post.new).create? %>
 
-<%= link_to "Create new post", new_post_path , class: "label label-warning col-md-3 col-md-offset-9" %>
-<% end %>
-<h1>All Posts</h1>
- <% if policy(Post.all).index? %>
-<% @posts.each do |post| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to post.title, post %>
-      </h4>
-       <small>
-         submitted <%= time_ago_in_words(post.created_at) %> ago by 
-        post.user.name 
 
-         <br>
-         <%= post.comments.count %> Comments
-       </small>
-    </div>
-        <%= will_paginate @posts %>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Poopular</h1>
+    <p class="lead">Active posts this week</p>
+    <%= render @posts %>
+    <%= will_paginate @posts %>
   </div>
-<% end %>
-<% end %>
+  <div class="col-md-4">
+  </div>
+</div>

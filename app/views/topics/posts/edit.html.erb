@@ -1,0 +1,21 @@
+<h1>Edit Post</h1>
+
+<div class="row">
+	<div class="col-md-4">
+			<p>Guidelines for posts</p>
+			<ul>
+				<li>Make sure the it ryms.</li>
+				<li>Do't use the letter "A".</li>
+				<li>The incesant use of hashtag will get you banned</li>
+			</ul>
+	</div>
+	<div class="col-md-8">
+ 		<%= render partial: 'form', locals: {topic: @topic, post: @post} %>
+	</div>
+</div>
+
+
+
+<% if @post.picture? %>
+<%= image_tag(@post.picture_url(:large), width: 100, height: 100) %>
+<% end %>
