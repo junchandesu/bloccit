@@ -49,6 +49,9 @@ gem 'fog'
 gem 'will_paginate', '~> 3.0.5'
 
 gem 'newrelic_rpm'
+
+gem 'puma'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -74,7 +77,7 @@ end
 group :production do
    gem 'pg'
    gem 'rails_12factor'
- end
+   end
  
  group :development do
    gem 'sqlite3'
