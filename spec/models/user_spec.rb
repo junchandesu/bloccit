@@ -51,5 +51,9 @@ describe User do
        expect( users.first.comments_count ).to eq(2)
      end
    end
+
+   describe ".user_with_post_and_coment" do
+
+   end
 end
 
