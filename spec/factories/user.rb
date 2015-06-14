@@ -11,7 +11,7 @@
      	#comments and posts have user IDs, not the other way around. 
    		
    		after(:build) do |user|
-   			post = create(:post, :user user)
+   			post = create(:post, user: user)
    			comment = crate(:comment, user: user, post: post)
    		end
   	 end
