@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
  
-
+respond_to :html, :js
    
 def new
    # @topic = Topic.find(params[:topic_id])
@@ -39,11 +39,10 @@ end
        flash[:error] = "Comment couldn't be deleted. Try again."
        #redirect_to [@post.topic, @post]
      end
-   end
 
-     respond_to do |format|
-       format.html
-       format.js
+     respond_with(@comment) do |format|
+       format.html{ redirect_to [@post.topic, @post]}
+       
      end
-
+    end
 end
