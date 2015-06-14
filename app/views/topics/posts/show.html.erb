@@ -32,15 +32,17 @@
 <%= @post.markdown_body %>
 
 
-
+  <div class = 'js-comments' >
   <%= render partial: 'comments/comment', collection: @comments  %>
-
+  </div>
 <%=image_tag (@post.picture.large.url) if @post.picture? %>
 
     </p>
 
      <% if policy(Comment.new).create? %>
+<div class = 'new-comment'>
 <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: Comment.new} %>
+</div> 
     <% end %>
   </div>
  
