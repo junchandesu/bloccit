@@ -3,31 +3,34 @@ class CommentsController < ApplicationController
 respond_to :html, :js
    
 def new
-   # @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
-    @comment = Comment.new
-  #  authorize @comment
+ # @topic = Topic.find(params[:topic_id])
+  @post = Post.find(params[:post_id])
+  @comment = Comment.new
+#  authorize @comment
  end
 
 def create
  #  @topic = Topic.find(params[:topic_id])
    @post = Post.find(params[:post_id])
-   @comment = current_user.comments.build(params.require(:comment).permit(:body))
+   @comment = @post.comments
+   @comment = current_user.comments.build(comment_params)
    @comment.post = @post
+
    @new_comment = Comment.new
    authorize @comment
 
    if @comment.save
     flash[:notice] = "Comment was saved"
-    redirect_to [@post.topic, @post]
+    #redirect_to [@post.topic, @post]
    else
+    flash[:error] = "There was an error saving the comment."
     render :new
    end
 end
 
 
-   def destroy
-  #   @topic = Topic.find(params[:topic_id])
+  def destroy
+#   @topic = Topic.find(params[:topic_id])
      @post = Post.find(params[:post_id])
      @comment = @post.comments.find(params[:id])
      authorize @comment
@@ -44,5 +47,12 @@ end
        format.html{ redirect_to [@post.topic, @post]}
        
      end
-    end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 end
+
