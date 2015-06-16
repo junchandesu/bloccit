@@ -1,6 +1,6 @@
  <% if @comment.destroyed? %>
-$('#comment-' +<%= @comment.id %>).hide();   
- $('#comment-' +<%= @comment.id %>).fadeOut( "slow" );
+  
+ $('#comment-' +<%= @comment.id %>).fadeOut( 1600);
    $('.js-comments-count').html("<%= pluralize(@comment.user.comments.count, 'comment') %>");
 
  <% else %>

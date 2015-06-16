@@ -1,4 +1,4 @@
-<%= content_tag :div, class: 'media', id: "commment-#{comment.id}" do %>
+<%= content_tag :div, class: 'media', id: "comment-#{comment.id}" do %>
 	<%= link_to '#', class: "pull-left" do %>
 	    <%= image_tag(comment.user.avatar.tiny.url, class: "media-object") if comment.user.avatar? %>
     <% end %>
