@@ -13,4 +13,29 @@
     <%= render partial: 'form', locals: {topic: @topic} %>
    </div>
  </div>
+<script type="text/javascript">
+  var blocmetrics = {
+    report: function(attr){
+      var event = {
+        job: {
+          name: attr
+      }
+    }
 
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://localhost:3000/api/jobs", true);
+    request.setRequestHeader('Content-Type', 'application/json');
+
+    request.onreadystatechange = function() {
+      // #2
+    };
+
+    request.send(JSON.stringify(event));
+  }
+}
+  $(document).ready(function(){
+    $('#commit-and-send').click(function(){
+      blocmetrics.report($('#attr-to-send').val());
+    })
+  })
+</script>

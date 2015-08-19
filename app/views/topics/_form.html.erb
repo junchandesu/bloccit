@@ -12,7 +12,7 @@
    
    <%= form_group_tag(topic.errors[:name]) do %>
     <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control', placeholder: "Enter topic name" %>
+    <%= f.text_field :name, id: 'attr-to-send', class: 'form-control', placeholder: "Enter topic name" %>
     <% end %>
     <div class="form-group">
        <%= f.label :description %>
@@ -23,5 +23,5 @@
       <%= f.check_box :public %> Public topic
     <% end %>
     </div>
-      <%= f.submit "Save", class: 'btn btn-success' %>
+      <%= f.submit "Save", id: 'commit-and-send', class: 'btn btn-success' %>
 <% end %>
